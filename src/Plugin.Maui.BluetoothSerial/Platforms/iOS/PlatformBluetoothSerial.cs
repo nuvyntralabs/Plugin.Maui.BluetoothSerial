@@ -40,8 +40,8 @@ sealed class MfiSession : IBluetoothSerialSession
     }
     public Task<int> ReadAsync(byte[] buffer, CancellationToken cancellationToken = default)
     {
-        var n = session.InputStream?.Read(buffer, 0, buffer.Length) ?? 0;
-        return Task.FromResult(n);
+        var n = session.InputStream?.Read(buffer, 0, (nuint)buffer.Length) ?? 0;
+        return Task.FromResult((int)n);
     }
     public Task DisconnectAsync(CancellationToken cancellationToken = default) => Task.CompletedTask;
     public ValueTask DisposeAsync() => ValueTask.CompletedTask;
