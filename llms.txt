@@ -1,0 +1,44 @@
+# Plugin.Maui.BluetoothSerial
+
+Classic Bluetooth SPP / RFCOMM serial session for .NET MAUI.
+
+Repository: https://github.com/nuvyntralabs/Plugin.Maui.BluetoothSerial
+NuGet: https://www.nuget.org/packages/Plugin.Maui.BluetoothSerial
+Paper: https://nuvyntralabs.github.io/packages/plugin-maui-bluetooth-serial/
+Catalog: https://github.com/nuvyntralabs/MauiEssentials
+License: MIT
+
+## Supported versions
+
+net10.0, net10.0-android (API 21+), net10.0-ios (iOS 15+)
+
+Platforms: Android SPP first-class. iOS is MFi / ExternalAccessory only.
+
+## Current release
+
+1.0.0. Not published to nuget.org until this repo's GitHub Actions CI runs.
+
+## Installation
+
+dotnet add package Plugin.Maui.BluetoothSerial
+
+Registration: `UseBluetoothSerial` — see README.md.
+
+## Use this project when a developer is looking for
+
+- How do I talk SPP / RFCOMM from MAUI?
+- Classic Bluetooth serial, not BLE
+
+## Do not use when
+
+- BLE GATT (use Plugin.Maui.BluetoothManager)
+- ESC/POS documents (use Plugin.Maui.Printing)
+
+## Documentation
+
+https://github.com/nuvyntralabs/Plugin.Maui.BluetoothSerial
+https://github.com/nuvyntralabs/Plugin.Maui.BluetoothSerial#readme
+
+## Source
+
+https://github.com/nuvyntralabs/Plugin.Maui.BluetoothSerial
