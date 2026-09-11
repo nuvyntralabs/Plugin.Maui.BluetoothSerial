@@ -55,11 +55,39 @@ Resolve `IBluetoothSerial` from dependency injection, or use `BluetoothSerial.Cu
 | **Session** | `ConnectAsync` / `WriteAsync` / `ReadAsync` / `DisconnectAsync` |
 | **Events** | `ConnectionStateChanged` |
 
+## Permissions
+
+### Android
+
+Add to `Platforms/Android/AndroidManifest.xml`:
+
+```xml
+<uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+<uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" />
+```
+
+`BLUETOOTH_CONNECT` / `BLUETOOTH_SCAN` are runtime permissions on Android 12+.
+
+### iOS
+
+Classic SPP is not public on iOS. MFi accessories need the protocol strings in `Platforms/iOS/Info.plist`:
+
+```xml
+<key>UISupportedExternalAccessoryProtocols</key>
+<array>
+	<string>com.example.protocol</string>
+</array>
+```
+
+Replace `com.example.protocol` with the accessory’s MFi protocol. Without this key, iOS returns `NotSupported`.
+
 ## Platform notes
 
-**Android** — bonded RFCOMM devices. Needs `BLUETOOTH_CONNECT` / `BLUETOOTH_SCAN`.
+**Android** — bonded RFCOMM devices.
 
-**iOS** — no public RFCOMM. MFi accessories only; otherwise `NotSupported`.
+**iOS** — no public RFCOMM. MFi External Accessory only; otherwise `NotSupported`.
 
 `net10.0` ships a loopback session for tests.
 
@@ -85,7 +113,7 @@ dotnet build samples/Plugin.Maui.BluetoothSerial.Sample/Plugin.Maui.BluetoothSer
 dotnet pack src/Plugin.Maui.BluetoothSerial/Plugin.Maui.BluetoothSerial.csproj -c Release -o artifacts
 ```
 
-The `.nupkg` is written to `artifacts/Plugin.Maui.BluetoothSerial.1.0.0.nupkg`. CI publishes to nuget.org and GitHub Packages.
+The `.nupkg` is written to `artifacts/Plugin.Maui.BluetoothSerial.1.0.1.nupkg`. CI publishes to nuget.org and GitHub Packages.
 
 ## License
 

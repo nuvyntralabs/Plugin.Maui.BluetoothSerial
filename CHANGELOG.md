@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- README lists Android and iOS host permissions. Sample iOS `Info.plist` includes `UISupportedExternalAccessoryProtocols`.
+
 ## 1.0.0
 
 - Classic Bluetooth SPP / RFCOMM serial session
